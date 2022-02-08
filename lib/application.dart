@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/screens/home.dart';
+import 'package:provider/provider.dart';
+import 'package:task_manager/screens/home/home.dart';
+import 'package:task_manager/screens/home/section.dart';
 import 'package:task_manager/utils/material_color_palette.dart';
 
 /// Holds all the requirements by the application.
@@ -10,15 +12,23 @@ class TaskManagerApplication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Task Manager',
-      theme: ThemeData(
-        primarySwatch: MaterialColorPalette.dark,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => Section(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Task Manager',
+        theme: ThemeData(
+          primarySwatch: MaterialColorPalette.dark,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        routes: {
+          HomeScreen.routePath: (context) => const HomeScreen(),
+        },
+        initialRoute: HomeScreen.routePath,
       ),
-      routes: {
-        HomeScreen.routePath: (context) => const HomeScreen(),
-      },
-      initialRoute: HomeScreen.routePath,
     );
   }
 }
