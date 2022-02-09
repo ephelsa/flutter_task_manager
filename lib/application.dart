@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_manager/screens/home/home.dart';
-import 'package:task_manager/screens/home/section.dart';
+import 'package:task_manager/screens/home/section/section.dart';
 import 'package:task_manager/utils/material_color_palette.dart';
 
 /// Holds all the requirements by the application.

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/screens/home/section.dart';
+import 'package:task_manager/screens/home/section/pills_section.dart';
+import 'package:task_manager/screens/home/section/section_content.dart';
 import 'package:task_manager/widgets/circular_button_icon.dart';
 
 /// [HomeScreen] contains these bunch of widgets:
-/// - [ ] Today section
+/// - [x] Today section
 /// - [ ] Upcoming section
 /// - [ ] Task done section
 class HomeScreen extends StatelessWidget {
@@ -20,15 +21,19 @@ class HomeScreen extends StatelessWidget {
           slivers: [
             _buildAppBar(context),
             _buildHeader(context),
+            _buildSectionContent(context),
           ],
         ),
       ),
     );
   }
 
+  /// TODO
   Widget _buildAppBar(BuildContext context) {
     return SliverAppBar(
       backgroundColor: Colors.white,
+      floating: true,
+      elevation: 1,
 
       /// Menu button
       /// [CircularIconButton] needs to be inside a [Container]. For some reason
@@ -83,6 +88,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  /// TODO
   Widget _buildHeader(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
@@ -122,11 +128,19 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: PillsSection()),
+              padding: EdgeInsets.only(top: 18.0),
+              child: PillsSection(),
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  /// TODO
+  Widget _buildSectionContent(BuildContext context) {
+    return const SliverToBoxAdapter(
+      child: SectionContent(),
     );
   }
 }
